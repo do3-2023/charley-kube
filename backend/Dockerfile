@@ -1,27 +1,28 @@
+# Étape 1 : Construction de l'application
 FROM node as build
 
-# create app directory
 WORKDIR /app
 
-# copy package.json first to leverage Docker cache
-COPY package.json .
+COPY package*.json ./
 
-# install dependencies
-RUN npm install
+RUN npm ci --only=production
 
-# copy app source
 COPY . .
 
 RUN npm run build
 
 FROM node:alpine
 
-COPY --from=build /app/dist ./dist
+WORKDIR /app
 
+COPY --from=build /app/dist ./dist
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm ci --only=production
 
 RUN rm package*.json
 
+EXPOSE 3000
+
+# Commande de démarrage de l'application
 CMD [ "node", "dist/index.js" ]
