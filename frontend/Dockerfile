@@ -25,7 +25,7 @@ RUN npm run build
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-LABEL org.opencontainers.image.source="https://github.com/do3-2023/charley-kube-frontend"
+LABEL org.opencontainers.image.source="https://github.com/do3-2023/charley-kube"
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1

@@ -1,6 +1,6 @@
 # charley-kube
 
-## 1. Create deployment for backend
+## Create deployment for backend
 
 First go to `backend\infra` :
 
