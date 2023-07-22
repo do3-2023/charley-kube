@@ -1,25 +1,23 @@
-# Étape 1 : Construction de l'application
-FROM node as build
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install --only=production
-
-COPY . .
-
-RUN npm run build
-
+# Utiliser l'image Node.js en tant que base
 FROM node:alpine
 
-WORKDIR /app
+# Répertoire de travail dans le conteneur
+WORKDIR /usr/src/app
 
-COPY --from=build /app/dist ./dist
+# Copier les fichiers package.json et package-lock.json (ou yarn.lock) pour installer les dépendances
 COPY package*.json ./
 
-RUN npm install --only=production
+# Installer les dépendances
+RUN npm install
 
+# Copier le reste du code source de l'application
+COPY . .
 
-# Commande de démarrage de l'application
-CMD [ "node", "dist/index.js" ]
+# Compiler les fichiers TypeScript en JavaScript
+RUN npm run build
+
+# Exposer le port du serveur Node.js
+EXPOSE 3000
+
+# Commande de démarrage du serveur
+CMD [ "npm", "run", "start" ]
