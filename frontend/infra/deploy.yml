@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: frontend
+spec:
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - image: ghcr.io/do3-2023/charley-kube:latest
+        imagePullPolicy: IfNotPresent
+        name: frontend
+        resources: {}
+        ports:
+        - containerPort: 8080
+          name: frontend
+          protocol: TCP
