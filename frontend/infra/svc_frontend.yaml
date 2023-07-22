@@ -5,11 +5,12 @@ metadata:
   labels:
     app: webapp
   name: webapp
+  namespace: frontend
 spec:
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 3000
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
   selector:
     app: webapp
   type: NodePort

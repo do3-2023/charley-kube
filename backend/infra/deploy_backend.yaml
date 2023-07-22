@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: webapp
-  name: webapp
-  namespace: frontend
+    app: backend
+  name: backend
+  namespace: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app: backend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: webapp
+        app: backend
     spec:
       containers:
-        - image: ghcr.io/do3-2023/charley-kube:latest
-          name: charley-kube
-          resources: {}
+      - image: ghcr.io/do3-2023/charley-kube-backend:latest
+        name: charley-kube-backend
+        resources: {}
 status: {}

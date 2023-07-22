@@ -20,7 +20,6 @@ COPY package*.json ./
 
 RUN npm install --only=production
 
-EXPOSE 3000
 
 # Commande de démarrage de l'application
 CMD [ "node", "dist/index.js" ]

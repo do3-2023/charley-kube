@@ -8,11 +8,11 @@ const app = express();
 const port = 5000;
 
 const dbConfig = {
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT || "5432"),
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: "postgres-service.db.svc.cluster.local",
+  port: 5432,
+  database: "kubernetes",
+  user: "charley",
+  password: "password",
 };
 
 const db = new Pool(dbConfig);

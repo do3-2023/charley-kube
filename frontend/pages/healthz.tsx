@@ -22,7 +22,9 @@ export default Healthz;
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
   try {
     // Replace 'YOUR_API_ENDPOINT' with the actual URL of your API
-    const response = await fetch("http://127.0.0.1:5000/healthz");
+    const response = await fetch(
+      "http://backend-service.svc.backend.local.cluster:5000/healthz"
+    );
     const data: Data = await response.json();
     console.log("Data received:", data);
     // The fetched data will be available as props in the Healthz component
