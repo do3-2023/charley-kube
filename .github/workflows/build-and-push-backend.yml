@@ -17,7 +17,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: do3-2023/charley-kube
+  IMAGE_NAME: do3-2023/charley-kube-backend
 
 jobs:
   build-and-push-image:
