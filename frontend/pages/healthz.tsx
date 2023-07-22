@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<Data> = async () => {
   try {
     // Replace 'YOUR_API_ENDPOINT' with the actual URL of your API
     const response = await fetch(
-      "backend-service.backend.svc.cluster.local:5000/healthz"
+      "http://backend-service.backend.svc.cluster.local:5000/healthz"
     );
     const data: Data = await response.json();
     console.log("Data received:", data);

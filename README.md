@@ -1,6 +1,6 @@
 # charley-kube
 
-## Create deployment for backend
+## Create deployment and service for backend
 
 First go to `backend\infra` :
 
@@ -24,9 +24,10 @@ Then you can apply the deployment:
 
 ```bash
 kubectl apply -f deploy_backend.yaml
+kubectl apply -f svc_backend.yaml
 ```
 
-## Create deployment for frontend
+## Create deployment and service (nodePort) for frontend
 
 First go to `frontend\infra` :
 
@@ -51,6 +52,7 @@ To know the port of the frontend service:
 ```bash
 kubectl get svc -n frontend
 ```
+
 To get the IP of the frontend service:
 
 ```bash
