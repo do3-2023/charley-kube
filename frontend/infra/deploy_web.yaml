@@ -19,7 +19,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - image: ghcr.io/do3-2023/charley-kube:latest
-        name: charley-kube
-        resources: {}
+        - image: ghcr.io/do3-2023/charley-kube:latest
+          name: charley-kube
+          resources: {}
 status: {}
