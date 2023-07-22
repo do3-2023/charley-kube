@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm install --only=production
 
 COPY . .
 
@@ -18,9 +18,7 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY package*.json ./
 
-RUN npm ci --only=production
-
-RUN rm package*.json
+RUN npm install --only=production
 
 EXPOSE 3000
 
