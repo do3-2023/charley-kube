@@ -18,21 +18,27 @@ spec:
         app: database
     spec:
       containers:
-        - name: postgres
-          image: postgres:15-alpine
-          imagePullPolicy: "IfNotPresent"
-          env:
-            - name: POSTGRES_USER
-              value: charley
-            - name: POSTGRES_PASSWORD
-              value: password
-            - name: POSTGRES_DB
-              value: kubernetes
-          ports:
-            - containerPort: 5432
-          volumeMounts:
-            - name: data
-              mountPath: /var/lib/postgresql/data
+      - name: postgres
+        image: postgres:15-alpine
+        imagePullPolicy: "IfNotPresent"
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: username
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: password
+          - name: POSTGRES_DB
+            value: kubernetes
+        ports:
+          - containerPort: 5432
+        volumeMounts:
+          - name: data
+            mountPath: /var/lib/postgresql/data
       volumes:
         - name: data
           persistentVolumeClaim:

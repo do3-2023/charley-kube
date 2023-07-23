@@ -4,7 +4,8 @@ const nextConfig = {};
 module.exports = nextConfig;
 
 module.exports = {
-  env: {
-    baseUrlApi: "http://localhost:5000",
+  serverRuntimeConfig: {
+    // Will only be available on the server side
+    baseAPI: "backend-service.backend.svc.cluster.local:5000",
   },
 };

@@ -61,6 +61,14 @@ For each service you want to create, you can adapt the following command in the 
 ```bash
 kubectl create service <service-type> <service-name> --tcp=<port>:<port> -n <namespace-required> --dry-run=client -o yaml > service.yaml
 ```
+
+## Create dry-run secret 
+
+For each secret you want to create, you can adapt the following command in the appropriate working directory, this will create a `secret.yaml` file that you can adapt and apply:
+
+```bash
+kubectl create secret generic <secret-name> --from-literal=<key>=<value> -n <namespace-required> --dry-run=client -o yaml > secret.yaml
+```
 # Run the project
 ## Apply and delete all kubernetes objects
 
@@ -89,4 +97,9 @@ kubectl port-forward services/webapp-service 5000:80 -n frontend
 ```
 
 Then you can access on heathcheck page on [localhost:5000/healthcheck](http://localhost:5000/healthz)
+
+In order to access the backend API, the frontend sends a request to `backend-service.backend.svc.cluster.local:5000` you can find the serverRuntimeConfig in the `frontend/next.config.js` file.
+
+
+
 

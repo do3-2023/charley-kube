@@ -1,4 +1,7 @@
 import { GetServerSideProps } from "next";
+import getConfig from "next/config";
+
+const { serverRuntimeConfig } = getConfig();
 
 interface Data {
   message: string;
@@ -24,7 +27,7 @@ export default Healthz;
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const response = await fetch(
-      "http://backend-service.backend.svc.cluster.local:5000/healthz"
+      `http://${serverRuntimeConfig.baseAPI}/healthz`
     );
     const data: Data = await response.json();
     return {
