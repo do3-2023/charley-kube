@@ -19,6 +19,11 @@ A CI github actions is configured to build the docker images and push them to th
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
+Add autocomplete to kind by editing your `~/.bashrc` file and adding the following line:
+
+```bash
+source <(kind completion bash)
+```
 
 ## Create cluster
 
@@ -50,7 +55,7 @@ For each service you want to create, you can adapt the following command in the 
 kubectl create service <service-type> <service-name> --tcp=<port>:<port> -n <namespace-required> --dry-run=client -o yaml > service.yaml
 ```
 
-## Apply  and  delete all kubernetes objects
+## Apply and delete all kubernetes objects
 
 From the working directory, you can apply this command to apply all kubernetes objects:
 
@@ -76,4 +81,4 @@ kubectl apply -f <object-name>.yaml
 kubectl port-forward services/webapp-service 5000:80 -n frontend
 ```
 
-Then you can access the webapp on [http://localhost:5000](http://localhost:5000)
+Then you can access on heathcheck page on [localhost:5000/healthcheck](http://localhost:5000/healthz)
