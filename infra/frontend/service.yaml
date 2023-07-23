@@ -4,11 +4,12 @@ metadata:
   creationTimestamp: null
   labels:
     app: webapp
-  name: webapp
+  name: webapp-service
   namespace: frontend
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       protocol: TCP
       targetPort: 3000
   selector:

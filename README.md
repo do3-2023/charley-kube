@@ -36,4 +36,30 @@ For each deployment you want to create, you can adapt the following command in t
 kubectl create deploy <deployment-name> --image=<image> -n <namespace-required> --dry-run=client -o yaml > deployment.yaml
 ```
 
+## Create dry-run services
 
+For each service you want to create, you can adapt the following command in the appropriate working directory, this will create a `service.yaml` file that you can adapt and apply:
+
+```bash
+kubectl create service <service-type> <service-name> --tcp=<port>:<port> -n <namespace-required> --dry-run=client -o yaml > service.yaml
+```
+
+## Apply  and  delete all kubernetes objects
+
+From the working directory, you can apply this command to apply all kubernetes objects:
+
+```bash
+kubectl apply -R -f infra/
+```
+
+You can also delete all kubernetes objects:
+
+```bash
+kubectl delete -R -f infra/
+```
+
+To apply specific objects, you can use the following command:
+
+```bash
+kubectl apply -f <object-name>.yaml
+```
