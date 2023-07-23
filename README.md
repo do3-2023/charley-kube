@@ -63,3 +63,11 @@ To apply specific objects, you can use the following command:
 ```bash
 kubectl apply -f <object-name>.yaml
 ```
+
+## Apply port-forwarding to access the webapp
+
+```bash
+kubectl port-forward services/webapp-service 5000:80 -n frontend
+```
+
+Then you can access the webapp on [http://localhost:5000](http://localhost:5000)
