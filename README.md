@@ -6,6 +6,12 @@ This project is a Kubernetes project that will be used to deploy a frontend, a b
 
 A CI github actions is configured to build the docker images and push them to the github registry. The images are then pulled from the registry and deployed on the Kubernetes cluster.
 
+## Images build by the CI
+
+- [charley-kube-frontend](https://github.com/do3-2023/charley-kube/pkgs/container/charley-kube-frontend)
+- [charley-kube-backend](https://github.com/do3-2023/charley-kube/pkgs/container/charley-kube-backend)
+
+
 ## Install kind
 
 ```bash

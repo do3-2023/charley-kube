@@ -23,7 +23,6 @@ app.get("/healthz", async (_, res) => {
     await client.query("SELECT 1");
     client.release();
 
-    // Respond with a JSON object indicating success
     const jsonResponse = {
       status: "success",
       message: "Everything is good. The database is reachable!",
@@ -32,7 +31,6 @@ app.get("/healthz", async (_, res) => {
   } catch (err) {
     console.error("Unable to ping the database:", err);
 
-    // Respond with a JSON object indicating error
     const jsonResponse = {
       status: "error",
       message: `API is UP but it's unable to ping the database: ${err.message}`,
