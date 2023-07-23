@@ -5,17 +5,17 @@ interface Data {
   status: string;
 }
 
-const Healthz: React.FC<Data> = ({ status }) => {
+const Healthz: React.FC<Data> = ({ status, message }) => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {status === "succes" ? (
         <div>
-          <h1>Database and API are up and running</h1>
+          <h1>{message}</h1>
           <img src="https://media.tenor.com/7J-xEXy1cNAAAAAC/server-runing-server-up-and-running.gif" alt="running" />
         </div>
       ) : (
         <div>
-          <h1>Oops API is UP but Database is not reachable</h1>
+          <h1>{message}</h1>
           <img src="https://media.tenor.com/PxwZ29xknDIAAAAd/wait-hold.gif" alt="down" />
         </div>
       )}

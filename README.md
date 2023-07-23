@@ -1,4 +1,12 @@
 # Kubernetes project 
+This Kubernetes project was edited by **Mr. Nicolas Muller** in parallel with the [Treeptik](https://treeptik.gitbook.io/k8s/fundamentals/orchestration) learning platform.
+## Student informations
+
+**Firstname :** Charley
+**Lastname :** GEOFFROY
+**Filiere :** DO3
+**Year :** 2022-2023
+## Table of contents
 
 ## How it works
 
@@ -24,7 +32,6 @@ Add autocomplete to kind by editing your `~/.bashrc` file and adding the followi
 ```bash
 source <(kind completion bash)
 ```
-
 ## Create cluster
 
 ```bash
@@ -54,7 +61,7 @@ For each service you want to create, you can adapt the following command in the 
 ```bash
 kubectl create service <service-type> <service-name> --tcp=<port>:<port> -n <namespace-required> --dry-run=client -o yaml > service.yaml
 ```
-
+# Run the project
 ## Apply and delete all kubernetes objects
 
 From the working directory, you can apply this command to apply all kubernetes objects:
