@@ -1,4 +1,4 @@
-# Kubernetes project for Charley
+# Kubernetes project 
 
 ## How it works
 
