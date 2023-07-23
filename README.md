@@ -89,3 +89,4 @@ kubectl port-forward services/webapp-service 5000:80 -n frontend
 ```
 
 Then you can access on heathcheck page on [localhost:5000/healthcheck](http://localhost:5000/healthz)
+
