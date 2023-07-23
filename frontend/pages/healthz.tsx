@@ -27,7 +27,7 @@ export default Healthz;
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const response = await fetch(
-      `http://${serverRuntimeConfig.baseAPI}/healthz`
+      `http://backend-service.backend.svc.cluster.local:5000/healthz`
     );
     const data: Data = await response.json();
     return {
