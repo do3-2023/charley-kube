@@ -1,82 +1,26 @@
-# charley-kube
+# Kubernetes project for Charley
 
-## Create deployment and service for backend
-
-First go to `backend\infra` :
+## Install kind
 
 ```bash
-cd backend/infra
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-$(uname)-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
 ```
 
-Create the namespace `backend`:
+## Create cluster
 
 ```bash
-kubectl create namespace backend
+kind create cluster tp-kube
 ```
 
-Then generate the deployment `deploy_backend.yaml`:
+## Create all namespaces required
+
+For each namespace you want to create, you can use the following command (frontend, backend, db):
 
 ```bash
-kubectl create deploy backend --image=ghcr.io/do3-2023/charley-kube-backend:latest -n backend --dry-run=client -o yaml > deploy_backend.yaml
+kubectl create namespace <namespace>
 ```
 
-Then you can apply the deployment:
 
-```bash
-kubectl apply -f deploy_backend.yaml
-kubectl apply -f svc_backend.yaml
-```
 
-## Create deployment and service (nodePort) for frontend
-
-First go to `frontend\infra` :
-
-```bash
-cd frontend/infra
-```
-
-Create the namespace `frontend`:
-
-```bash
-kubectl create namespace frontend
-```
-
-Then generate the deployment `deploy_frontend.yaml`:
-
-```bash
-kubectl create deploy frontend --image=ghcr.io/do3-2023/charley-kube-frontend:latest -n frontend --dry-run=client -o yaml > deploy_frontend.yaml
-```
-
-To know the port of the frontend service:
-
-```bash
-kubectl get svc -n frontend
-```
-
-To get the IP of the frontend service:
-
-```bash
-kubectl get nodes -o wide
-```
-
-## 3. Create service for frontend SSR (NodePort)
-
-Assuming you are still in `frontend\infra` to generate the service `svc_frontend.yaml`:
-
-```bash
-kubectl expose deployment webapp --port 80 --target-port 3000 --dry-run=client -o yaml > svc_frontend.yaml
-```
-
-## 5. Create postgres deployment
-
-First go to `postgres\infra` :
-
-```bash
-cd db/infra
-```
-
-Then generate the deployment `deploy_postgres.yaml`:
-
-```bash
-kubectl create deploy postgres --image=postgres:latest -n db --dry-run=client -o yaml > postgres_deployment.yaml
-```
