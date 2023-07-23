@@ -96,7 +96,7 @@ kubectl apply -f <object-name>.yaml
 kubectl port-forward services/webapp-service 5000:80 -n frontend
 ```
 
-Then you can access on heathcheck page on [localhost:5000/healthcheck](http://localhost:5000/healthz)
+Then you can access on heathcheck page on [localhost:5000/healthz](http://localhost:5000/healthz)
 
 In order to access the backend API, the frontend sends a request to `backend-service.backend.svc.cluster.local:5000` you can find the serverRuntimeConfig in the `frontend/next.config.js` file.
 

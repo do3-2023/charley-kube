@@ -34,10 +34,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: data,
     };
   } catch (error) {
-    console.error("Error fetching data:", error);
     return {
       props: {
-        message: `Error fetching data ${error}`,
+        message: `Error fetching data to ${serverRuntimeConfig.baseAPI}: ${error}`,
       },
     };
   }
