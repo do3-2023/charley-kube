@@ -5,7 +5,6 @@ WORKDIR /app
 COPY . ./
 RUN cargo build --target=wasm32-wasi --release
 
-
 FROM scratch
 COPY spin.toml /spin.toml
 COPY --from=builder /app/target/wasm32-wasi/release/backend_rust.wasm /backend_rust.wasm
