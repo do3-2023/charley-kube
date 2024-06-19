@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "backend-rust"
+version = "0.1.0"
+authors = ["Charley <charley.geoffroy@protonmail.com>"]
+description = "wasm app"
+
+[[trigger.http]]
+route = "/..."
+component = "backend-rust"
+
+[component.backend-rust]
+source = "target/wasm32-wasi/release/backend_rust.wasm"
+allowed_outbound_hosts = []
+[component.backend-rust.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
