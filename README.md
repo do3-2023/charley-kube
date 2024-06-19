@@ -1,4 +1,5 @@
 # Kubernetes project 
+
 This Kubernetes project was edited by **Mr. Nicolas Muller** in parallel with the [Treeptik](https://treeptik.gitbook.io/k8s/fundamentals/orchestration) learning platform.
 ## Student informations
 
@@ -70,6 +71,12 @@ For each secret you want to create, you can adapt the following command in the a
 kubectl create secret generic <secret-name> --from-literal=<key>=<value> -n <namespace-required> --dry-run=client -o yaml > secret.yaml
 ```
 # Run the project
+## Create Namespace
+
+```bash
+kubectl create -R -f infra/ns
+```
+
 ## Apply and delete all kubernetes objects
 
 From the working directory, you can apply this command to apply all kubernetes objects:
@@ -101,5 +108,7 @@ Then you can access on heathcheck page on ==> [localhost:5000/healthz](http://lo
 In order to access the backend API, the frontend sends a request to `backend-service.backend.svc.cluster.local:5000` you can find the serverRuntimeConfig in the `frontend/next.config.js` file.
 
 
+
+## TP - Monitoring and Dashboarding
 
 
