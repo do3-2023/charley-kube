@@ -1,0 +1,10 @@
+apiVersion: core.spinoperator.dev/v1alpha1
+kind: SpinApp
+metadata:
+  name: charley-kube-backend-wasm
+spec:
+  image: "ghcr.io/do3-2023/charley-kube-backend-wasm:latest"
+  imagePullSecrets:
+    - name: ghcr
+  replicas: 2
+  executor: containerd-shim-spin
