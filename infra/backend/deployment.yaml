@@ -19,7 +19,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: ghcr.io/do3-2023/charley-kube-backend:latest
+      - image: ghcr.io/do3-2023/charley-kube-backend:v1.0.1
         name: charley-kube-backend
         livenessProbe:
           httpGet:
