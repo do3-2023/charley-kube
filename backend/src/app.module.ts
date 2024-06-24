@@ -6,6 +6,7 @@ import { Person } from './entity/person.entity';
 import { HealthController } from './controller/health.controller';
 import { TerminusModule } from '@nestjs/terminus';
 import { MigrationV11719220037932 } from './migrations/1719220037932-migration_v1';
+import { MigrationV21719221203249 } from './migrations/1719221203249-migration_v2';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -15,9 +16,11 @@ import { MigrationV11719220037932 } from './migrations/1719220037932-migration_v
       username: 'postgres',
       password: 'password',
       database: 'kubernetes',
+      autoLoadEntities: true,
       entities: [Person],
-      migrations: [MigrationV11719220037932],
-      synchronize: true,
+      migrations: [MigrationV11719220037932, MigrationV21719221203249],
+      migrationsRun: true,
+      synchronize: false,
     }),
     TypeOrmModule.forFeature([Person]),
     TerminusModule,

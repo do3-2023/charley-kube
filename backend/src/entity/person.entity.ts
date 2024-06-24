@@ -12,8 +12,5 @@ export class Person {
   lastName: string;
 
   @Column()
-  location: string;
-
-  @Column()
   phoneNumber: string;
 }
